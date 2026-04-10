@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.racextreme-container {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #1a1a1a;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.racextreme-container .dynamic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(45deg, #1a1a15, #2a2a25, #1a1a15);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.racextreme-container .logo {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  z-index: 100;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.racextreme-container .creator-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  color: #EFCA29;
+  font-size: 12px;
+  font-family: "Kaushan Script", cursive;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.car-model-selector {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  background: rgba(26, 26, 21, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.model-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #EFCA29;
+  color: #EFCA29;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.model-btn.active, .model-btn:hover {
+  background: #EFCA29;
+  color: #1A1A15;
+}
+
+.stats-overlay {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  z-index: 100;
+  background: rgba(26, 26, 21, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+.stats-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.performance-meter {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  position: relative;
+}
+
+.meter-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sound-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+}
+
+.sound-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(26, 26, 21, 0.8);
+  border: 1px solid #EFCA29;
+  color: #EFCA29;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.sound-btn:hover {
+  background: #EFCA29;
+  color: #1a1a15;
+}
+
+.car-info {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(26, 26, 21, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  width: 80%;
+  max-width: 600px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+.car-info.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.car-info h3 {
+  color: #EFCA29;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.car-info p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.interactive-element {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.interactive-element:hover {
+  transform: scale(1.05);
+}
+
+/* Swiper Styling */
+.racextreme-swiper {
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+.swiper-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-bg-shape1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+  transition: background-color 0.5s ease;
+}
+
+.slide-bg-shape2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #111;
+  z-index: -2;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.racextreme-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 60%;
+  z-index: 20;
+}
+
+.title-area {
+  flex: 1;
+  color: #fff;
+}
+
+.title-area .small {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.title-area .big {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  letter-spacing: 5px;
+}
+
+.image-area {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 50;
+  min-height: 400px;
+}
+
+.image-area img {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 75vh;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9));
+  transform: scale(1.15);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 100;
+}
+
+.image-area:hover img {
+    transform: scale(1.15) rotate(1deg);
+}
+
+.specs-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  color: #fff;
+  z-index: 50;
+}
+
+.specs-area span {
+  font-size: 18px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  padding: 10px 25px;
+  border-radius: 50px;
+  display: inline-block;
+  border: 1px border-white/10;
+}
+
+.specs-area b {
+  font-size: 24px;
+}
+
+.specs-area button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid;
+  color: inherit;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s;
+}
+
+.specs-area button:hover {
+  background: currentColor;
+  color: #1a1a1a;
+}
+
+.swipe-hint {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  z-index: 100;
+  text-align: center;
+  animation: fadeOutHint 5s forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOutHint {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .racextreme-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  .title-area .big {
+    justify-content: center;
+    font-size: 50px;
+  }
+  .specs-area {
+    align-items: center;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Container, Row, Col, Spinner, ProgressBar } from "react-bootstrap";
 import "./LoginPage.css";
-const UNSPLASH_KEY = "ZqEpSKIOhSNjCGeJLyY-UWVhX4p9sRw-dlU4e1cfzmQ";
+
 
 const LoginPage = () => {
   const navigate = useNavigate();

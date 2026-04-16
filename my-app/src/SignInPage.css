@@ -1,0 +1,178 @@
+/* =========================================
+   SignInPage.css – Animated Panel System
+   ========================================= */
+
+/* ── Panel wrapper: establishes a relative stacking context ── */
+.signin-panels-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+/* ── Every panel sits on top of each other, absolutely ── */
+.signin-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity  0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active panel – centred, fully visible */
+.panel-active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* Panel that just left to the left */
+.panel-exit-left {
+  transform: translateX(-60px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Panel waiting off-screen to the right */
+.panel-hidden-right {
+  transform: translateX(60px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Brand icon ── */
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+/* ── Auth icon circle (lock / shield) ── */
+.auth-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: iconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.auth-icon-circle--green {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #15803d;
+}
+
+@keyframes iconPop {
+  0%   { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Inline alerts ── */
+.auth-alert {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideDown 0.3s ease both;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-8px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.auth-alert--error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.auth-alert--success {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* ── Forgot password inline link-button ── */
+.forgot-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #0d6efd;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.forgot-link:hover {
+  color: #084fd1;
+  text-decoration: underline;
+}
+
+/* ── Back arrow button ── */
+.back-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s, gap 0.2s;
+}
+.back-arrow-btn:hover {
+  color: #111827;
+  gap: 10px;
+}
+.back-arrow-btn svg {
+  transition: transform 0.2s;
+}
+.back-arrow-btn:hover svg {
+  transform: translateX(-3px);
+}
+
+/* ── Password strength bar ── */
+.strength-bar-track {
+  height: 5px;
+  border-radius: 99px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.strength-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.strength-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 4px;
+  display: inline-block;
+  transition: color 0.4s ease;
+}

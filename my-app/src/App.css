@@ -1,0 +1,6 @@
+/* Resetting legacy App.css to prevent layout conflicts with Elite UI */
+.App {
+  text-align: center;
+}
+
+/* We now use index.css and theme.css for global Elite styling */

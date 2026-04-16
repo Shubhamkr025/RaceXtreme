@@ -1,0 +1,110 @@
+/* RaceXtreme UI Core Theme Utilities */
+:root {
+  --elite-bg: #0a0a0b;
+  --card-bg: #151517;
+  --accent: #EFCA29;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-dim: #9ca3af;
+}
+
+.elite-page {
+  min-height: 100vh;
+  background-color: var(--elite-bg);
+  color: white;
+  padding-top: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.max-w-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.elite-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.elite-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bg-glass {
+  background: var(--glass) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.input-elite {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.75rem !important;
+  padding: 0.75rem 1rem !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+}
+
+.input-elite:focus {
+  border-color: var(--accent) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 4px rgba(239, 202, 41, 0.1) !important;
+}
+
+.glass-morphism {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-auto {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Grid presets */
+.grid-cols-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
+
+/* Spacing and Visibility helpers */
+.w-full { width: 100%; }
+.m-0 { margin: 0; }
+.p-0 { padding: 0; }
+
+/* Typography */
+.text-huge {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.text-accent { color: var(--accent); }
+.text-dim { color: var(--text-dim); }
+
+.mt-12 { margin-top: 2rem; }
+.mb-12 { margin-bottom: 2rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .elite-page { padding-top: 4rem; padding-left: 1rem; padding-right: 1rem; }
+  .text-huge { font-size: 2.5rem; }
+}

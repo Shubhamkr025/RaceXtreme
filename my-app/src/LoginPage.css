@@ -1,0 +1,69 @@
+/* LoginPage.css - Minimal Customization, heavily relying on Bootstrap */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Image cover overlay for Bootstrap columns */
+.bg-image-side {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bg-image-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhancing Bootstrap inputs slightly */
+.form-control {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.social-btn {
+  border: 1px solid #dee2e6;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-1px);
+}
+
+/* Quick step indicators */
+.step-indicator {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.password-strength-bar {
+  height: 4px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}

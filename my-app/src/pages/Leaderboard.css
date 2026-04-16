@@ -1,0 +1,217 @@
+.leaderboard-page .metric-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.metric-toggle-btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.metric-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+}
+
+.metric-toggle-btn.active {
+    background: rgba(239, 202, 41, 0.1);
+    border-color: #EFCA29;
+    color: #EFCA29;
+}
+
+/* Rank Cards */
+.rank-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rank-card {
+    display: grid;
+    grid-template-columns: auto 60px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: var(--card-bg, #151517);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.25rem;
+    transition: all 0.3s;
+}
+
+.rank-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+}
+
+.rank-card.gold {
+    background: linear-gradient(135deg, rgba(239, 202, 41, 0.08), var(--card-bg, #151517));
+    border-color: rgba(239, 202, 41, 0.2);
+}
+
+.rank-card.silver {
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.05), var(--card-bg, #151517));
+    border-color: rgba(192, 192, 192, 0.15);
+}
+
+.rank-card.bronze {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.05), var(--card-bg, #151517));
+    border-color: rgba(205, 127, 50, 0.15);
+}
+
+/* Position */
+.rank-position {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.rank-position.gold {
+    background: linear-gradient(135deg, #EFCA29, #d4a91a);
+    color: black;
+    box-shadow: 0 5px 20px rgba(239, 202, 41, 0.3);
+}
+
+.rank-position.silver {
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: black;
+    box-shadow: 0 5px 15px rgba(192, 192, 192, 0.2);
+}
+
+.rank-position.bronze {
+    background: linear-gradient(135deg, #cd7f32, #a0612b);
+    color: white;
+    box-shadow: 0 5px 15px rgba(205, 127, 50, 0.2);
+}
+
+.rank-position.normal {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rank-car-thumb {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.rank-car-info h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 0 0.2rem 0;
+}
+
+.rank-car-info p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+}
+
+/* Value & Bar */
+.rank-value-section {
+    text-align: right;
+    min-width: 150px;
+}
+
+.rank-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+}
+
+.rank-bar-bg {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rank-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Crown */
+.crown-icon {
+    position: relative;
+}
+
+.crown-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239, 202, 41, 0.2), transparent);
+    animation: crownGlow 2s ease-in-out infinite;
+}
+
+@keyframes crownGlow {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* Stats Summary */
+.leaderboard-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: var(--card-bg, #151517);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.summary-card-value {
+    font-size: 2rem;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.summary-card-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .rank-card {
+        grid-template-columns: auto 1fr auto;
+    }
+    .rank-car-thumb {
+        display: none;
+    }
+    .leaderboard-summary {
+        grid-template-columns: 1fr;
+    }
+}

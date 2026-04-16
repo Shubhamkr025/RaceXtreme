@@ -7,6 +7,6 @@ const ContactSchema = new mongoose.Schema({
     subject: { type: String, required: true },
     message: { type: String, required: true },
     isCallbackRequested: { type: Boolean, default: false }
-}, { timestamps: true });
+}, { timestamps: true, bufferCommands: false });
 
 module.exports = mongoose.model('Contact', ContactSchema);

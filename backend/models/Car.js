@@ -12,6 +12,6 @@ const CarSchema = new mongoose.Schema({
     colorCode: { type: String },
     colorName: { type: String },
     thumbnail: { type: String, required: true }
-});
+}, { bufferCommands: false });
 
 module.exports = mongoose.model('Car', CarSchema);

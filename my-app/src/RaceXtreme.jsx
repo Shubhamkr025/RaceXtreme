@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, EffectCoverflow, Pagination } from 'swiper/modules';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Heart } from 'lucide-react';
 import Navbar from './components/Navbar';
 import AnimatedPage from './components/AnimatedPage';
+import { useToast } from './components/ToastSystem';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './RaceXtreme.css';
 
 export default function RaceXtreme() {
+  const { addToast } = useToast();
   const [cars, setCars] = useState([]);
   const [activeCar, setActiveCar] = useState(null);
   const [showStats, setShowStats] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [garageIds, setGarageIds] = useState([]);
 
   // Fallback images map
   const fallbacks = {
@@ -22,9 +26,15 @@ export default function RaceXtreme() {
     'Opel': 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=1200'
   };
 
-  const [error, setError] = useState(null);
+
 
   useEffect(() => {
+    // Load garage IDs
+    try {
+      const saved = JSON.parse(localStorage.getItem('racextreme_garage') || '[]');
+      setGarageIds(saved.map(c => c._id));
+    } catch { setGarageIds([]); }
+
     fetch('http://localhost:5000/api/cars')
       .then(res => {
         if (!res.ok) throw new Error('Database connection failed');
@@ -55,6 +65,25 @@ export default function RaceXtreme() {
 
   const handleImageError = (e, brand) => {
     e.target.src = fallbacks[brand] || 'https://images.unsplash.com/photo-1492144534655-906c9ef13497?auto=format&fit=crop&q=80&w=1200';
+  };
+
+  const toggleGarage = (car) => {
+    try {
+      let garage = JSON.parse(localStorage.getItem('racextreme_garage') || '[]');
+      const exists = garage.find(c => c._id === car._id);
+      if (exists) {
+        garage = garage.filter(c => c._id !== car._id);
+        setGarageIds(garage.map(c => c._id));
+        addToast('Removed from Garage', `${car.brand} ${car.title} removed from your collection.`, 'info');
+      } else {
+        garage.push(car);
+        setGarageIds(garage.map(c => c._id));
+        addToast('Added to Garage! ❤️', `${car.brand} ${car.title} saved to your personal collection.`, 'success');
+      }
+      localStorage.setItem('racextreme_garage', JSON.stringify(garage));
+    } catch (err) {
+      console.error('Garage error:', err);
+    }
   };
 
   if (loading) {
@@ -160,6 +189,26 @@ export default function RaceXtreme() {
                         className="w-full drop-shadow-[0_50px_50px_rgba(0,0,0,0.9)]" 
                         onError={(e) => handleImageError(e, car.brand)}
                     />
+                    {/* Garage Heart Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      onClick={(e) => { e.stopPropagation(); toggleGarage(car); }}
+                      style={{
+                        position: 'absolute', top: '1rem', right: '1rem',
+                        background: garageIds.includes(car._id) ? 'rgba(239, 68, 68, 0.2)' : 'rgba(255,255,255,0.1)',
+                        border: `1px solid ${garageIds.includes(car._id) ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255,255,255,0.1)'}`,
+                        borderRadius: '50%', width: '48px', height: '48px',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        cursor: 'pointer', backdropFilter: 'blur(10px)', zIndex: 200
+                      }}
+                    >
+                      <Heart
+                        size={20}
+                        fill={garageIds.includes(car._id) ? '#ef4444' : 'none'}
+                        color={garageIds.includes(car._id) ? '#ef4444' : 'rgba(255,255,255,0.5)'}
+                      />
+                    </motion.button>
                   </motion.div>
 
                   <motion.div 

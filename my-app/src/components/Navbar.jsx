@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Car, User, LogOut, Zap, Wrench, Palette, Mail } from 'lucide-react';
+import { LayoutDashboard, Car, User, LogOut, Zap, Wrench, Palette, Mail, Flag, ArrowLeftRight, Trophy, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { NotificationBell } from './ToastSystem';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -18,7 +19,11 @@ const Navbar = () => {
     const navItems = [
         { path: '/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
         { path: '/home', icon: <Car size={20} />, label: 'Showroom' },
+        { path: '/race', icon: <Flag size={20} />, label: 'Race' },
+        { path: '/compare', icon: <ArrowLeftRight size={20} />, label: 'Compare' },
+        { path: '/leaderboard', icon: <Trophy size={20} />, label: 'Ranks' },
         { path: '/modification', icon: <Wrench size={20} />, label: 'Mods' },
+        { path: '/garage', icon: <Heart size={20} />, label: 'Garage' },
         { path: '/colors', icon: <Palette size={20} />, label: 'Colors' },
         { path: '/contact', icon: <Mail size={20} />, label: 'Contact' },
         { path: '/profile', icon: <User size={20} />, label: 'Profile' },
@@ -49,6 +54,8 @@ const Navbar = () => {
                     </Link>
                 ))}
                 
+                <NotificationBell />
+
                 <button 
                     onClick={handleSignOut}
                     className="signout-btn"

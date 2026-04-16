@@ -1,0 +1,370 @@
+.drag-race-page {
+    min-height: 100vh;
+    background: #0a0a0b;
+    color: white;
+    padding-top: 5rem;
+}
+
+/* Car Selection Grid */
+.race-selector {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.race-slot {
+    flex: 1;
+    background: var(--card-bg, #151517);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.race-slot.player-a { border-color: rgba(239, 202, 41, 0.3); }
+.race-slot.player-b { border-color: rgba(59, 130, 246, 0.3); }
+
+.race-slot-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.race-slot-label.a { color: #EFCA29; }
+.race-slot-label.b { color: #3b82f6; }
+
+.car-selector-grid {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.car-option {
+    flex: 1;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.car-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.car-option.selected-a {
+    border-color: #EFCA29;
+    background: rgba(239, 202, 41, 0.08);
+}
+
+.car-option.selected-b {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.car-option img {
+    width: 100%;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.car-option-name {
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Race Track */
+.race-track-container {
+    background: #111;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.race-track-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.race-status {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.race-status.racing {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    animation: statusPulse 1s ease-in-out infinite;
+}
+
+.race-status.finished {
+    background: rgba(239, 202, 41, 0.1);
+    border-color: rgba(239, 202, 41, 0.3);
+    color: #EFCA29;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.race-lane {
+    position: relative;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.lane-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+}
+
+.lane-markers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.lane-marker {
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lane-finish {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    width: 4px;
+    height: 100%;
+    background: repeating-linear-gradient(
+        180deg,
+        white 0px,
+        white 8px,
+        #222 8px,
+        #222 16px
+    );
+    opacity: 0.3;
+}
+
+.race-car-sprite {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 50px;
+    z-index: 10;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+    transition: left 0.1s linear;
+}
+
+.lane-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    z-index: 5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.lane-label.a { color: #EFCA29; background: rgba(239, 202, 41, 0.1); }
+.lane-label.b { color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+
+/* Gauges Row */
+.gauges-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.gauge-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gauge-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    border-radius: 1.5rem;
+}
+
+.countdown-number {
+    font-size: 8rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #EFCA29;
+    text-shadow: 0 0 60px rgba(239, 202, 41, 0.5);
+}
+
+.countdown-go {
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #22c55e;
+    text-shadow: 0 0 60px rgba(34, 197, 94, 0.5);
+}
+
+/* Winner Banner */
+.winner-banner {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(239, 202, 41, 0.1), rgba(239, 202, 41, 0.02));
+    border: 1px solid rgba(239, 202, 41, 0.2);
+    border-radius: 1.5rem;
+}
+
+.winner-crown {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.winner-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.winner-time {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Confetti */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* RPM Bar */
+.rpm-bar-container {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 40px;
+}
+
+.rpm-bar-segment {
+    width: 8px;
+    border-radius: 2px;
+    transition: height 0.1s, background 0.1s;
+}
+
+/* Start Button */
+.start-race-btn {
+    width: 100%;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.start-race-btn.ready {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+}
+
+.start-race-btn.ready:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
+}
+
+.start-race-btn.disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.start-race-btn.reset {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .race-selector { flex-direction: column; }
+    .gauges-row { flex-wrap: wrap; }
+}

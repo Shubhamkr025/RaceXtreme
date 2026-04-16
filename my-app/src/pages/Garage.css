@@ -1,0 +1,327 @@
+.garage-page .garage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.garage-card {
+    background: var(--card-bg, #151517);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.garage-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.garage-card-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.garage-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.08;
+}
+
+.garage-card-image img {
+    max-width: 80%;
+    max-height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    transition: transform 0.4s;
+}
+
+.garage-card:hover .garage-card-image img {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.garage-card-body {
+    padding: 1.5rem;
+}
+
+.garage-card-brand {
+    font-size: 1.25rem;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 0.2rem;
+}
+
+.garage-card-title {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 1rem;
+}
+
+.garage-card-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.garage-stat {
+    text-align: center;
+}
+
+.garage-stat-value {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.garage-stat-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+}
+
+.garage-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.garage-card-price {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #EFCA29;
+}
+
+.garage-remove-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.garage-remove-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Collection Value */
+.collection-value-card {
+    background: linear-gradient(135deg, rgba(239, 202, 41, 0.08), rgba(239, 202, 41, 0.02));
+    border: 1px solid rgba(239, 202, 41, 0.15);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.collection-stat-value {
+    font-size: 2rem;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.collection-stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.25rem;
+}
+
+/* Empty State */
+.garage-empty {
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.garage-empty-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    animation: emptyPulse 3s ease-in-out infinite;
+}
+
+@keyframes emptyPulse {
+    0%, 100% { border-color: rgba(255, 255, 255, 0.08); transform: scale(1); }
+    50% { border-color: rgba(239, 202, 41, 0.2); transform: scale(1.05); }
+}
+
+.garage-empty h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.garage-empty p {
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+}
+
+.garage-empty-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #EFCA29;
+    color: black;
+    border: none;
+    border-radius: 1rem;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.garage-empty-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(239, 202, 41, 0.3);
+}
+
+/* Share Card */
+.share-card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.share-card {
+    width: 500px;
+    background: linear-gradient(135deg, #111, #1a1a1a);
+    border: 1px solid rgba(239, 202, 41, 0.2);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.share-card-title {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #EFCA29;
+    margin-bottom: 1.5rem;
+}
+
+.share-card-cars {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.share-car-chip {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.share-card-total {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #EFCA29;
+    margin-bottom: 0.5rem;
+}
+
+.share-card-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2rem;
+}
+
+.share-card-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.share-card-actions button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Heart Toggle */
+.heart-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-toggle:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.heart-toggle.active {
+    color: #ef4444;
+    animation: heartBeat 0.3s ease-in-out;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .garage-page .garage-grid {
+        grid-template-columns: 1fr;
+    }
+    .collection-value-card {
+        grid-template-columns: 1fr;
+    }
+}

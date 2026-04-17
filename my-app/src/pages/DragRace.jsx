@@ -27,7 +27,7 @@ const DragRace = () => {
     const startTimeRef = useRef(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/cars')
+        fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/cars`)
             .then(res => res.json())
             .then(data => {
                 setCars(data);

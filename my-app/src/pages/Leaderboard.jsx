@@ -18,7 +18,7 @@ const Leaderboard = () => {
     const [activeMetric, setActiveMetric] = useState('speed');
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/cars')
+        fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/cars`)
             .then(res => res.json())
             .then(data => setCars(data))
             .catch(err => console.error(err));

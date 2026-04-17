@@ -9,7 +9,14 @@ const contactRoutes = require('./routes/contact');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:3000', 
+        'https://shubhamkr025-racextreme-8u6e1smnu-shubhamkr025s-projects.vercel.app',
+        'https://shubhamkr025-racextreme.vercel.app' // Optional generalized vercel URL just in case
+    ],
+    credentials: true,
+}));
 app.use(express.json());
 
 // Set up routes

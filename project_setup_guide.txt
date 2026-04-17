@@ -1,0 +1,74 @@
+# RaceXtreme Project Setup Guide
+
+This document outlines the step-by-step process used to create the RaceXtreme React frontend and Node.js/Express backend from scratch.
+
+## Step 1: Create the Main Workspace
+First, we created the root directory that would hold both the frontend and backend applications.
+```bash
+mkdir reactapp
+cd reactapp
+```
+
+## Step 2: Initialize the React Frontend
+We used Create React App to generate the foundational React application inside a folder named `my-app`.
+```bash
+npx create-react-app my-app
+cd my-app
+```
+
+## Step 3: Install Frontend Dependencies
+Once inside the `my-app` directory, we installed the necessary packages for UI, routing, and animations.
+```bash
+npm install react-bootstrap bootstrap react-router-dom lucide-react
+npm install gsap @gsap/react framer-motion swiper
+```
+*Note: Make sure to import Bootstrap CSS in your React app's entry file (e.g., `src/index.js`):*
+`import 'bootstrap/dist/css/bootstrap.min.css';`
+
+## Step 4: Initialize the Node.js Backend
+We went back to the root workspace folder, created a new `backend` directory, and initialized a Node.js project.
+```bash
+cd ..
+mkdir backend
+cd backend
+npm init -y
+```
+
+## Step 5: Install Backend Dependencies
+In the `backend` directory, we installed the required packages for our REST API, database connection, and authentication.
+```bash
+npm install express mongoose dotenv cors jsonwebtoken bcryptjs
+```
+- `express`: The web framework for creating our API.
+- `mongoose`: For modeling and connecting to MongoDB.
+- `dotenv`: For loading environment variables (like DB connections and secrets) from a `.env` file.
+- `cors`: To allow our frontend (`localhost:3000`) to communicate with our backend API.
+- `jsonwebtoken` & `bcryptjs`: For user authentication and password hashing.
+
+## Step 6: Create Git Repository & Push to GitHub
+We then initialized a Git repository in the root workspace folder so we could track both `my-app` and `backend`.
+```bash
+cd ..
+git init
+git add .
+git commit -m "Initial commit: Set up RaceXtreme frontend and backend"
+git branch -M main
+git remote add origin https://github.com/Shubhamkr025/RaceXtreme.git
+git push -u origin main
+```
+
+## Running the Project Locally
+To run the project, you need two terminal windows:
+
+**Terminal 1 (Backend):**
+```bash
+cd backend
+node index.js  # or "npm start" if configured
+```
+*(Make sure to create a `.env` file in the backend folder with your `MONGO_URI` and secret keys).*
+
+**Terminal 2 (Frontend):**
+```bash
+cd my-app
+npm start
+```

@@ -22,7 +22,7 @@ const Modification = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/cars')
+        fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/cars`)
             .then(res => {
                 if (!res.ok) throw new Error('Database connection failed');
                 return res.json();
